@@ -11,6 +11,9 @@
         "shufo.vscode-blade-formatter",
         "ihunte.laravel-blade-wrapper",
         "bmewburn.vscode-intelephense-client",
-        "MehediDracula.php-namespace-resolver"
+        "mehedidracula.php-namespace-resolver",
+        "mohamedbenhida.laravel-intellisense",
+        "neilbrayfield.php-docblocker",
+        "bradlc.vscode-tailwindcss"
     ]
 }
