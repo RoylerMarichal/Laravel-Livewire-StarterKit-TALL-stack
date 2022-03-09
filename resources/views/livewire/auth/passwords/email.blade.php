@@ -74,12 +74,8 @@
     @if (config('captcha.sitekey') && config('captcha.secret'))
         <script>
             function reCaptchaCallback(response) {
-                    @this.set('recaptcha', response);
-                }
-
-                Livewire.on('resetReCaptcha', () => {
-                    grecaptcha.reset();
-                });
+                 @this.set('recaptcha', response);
+            }
         </script>
     @endif
 @endsection
