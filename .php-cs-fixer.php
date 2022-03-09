@@ -100,7 +100,7 @@ $rules = [
     'normalize_index_brace' => true,
     'not_operator_with_successor_space' => true,
     'object_operator_without_whitespace' => true,
-    'ordered_imports' => ['sort_algorithm' => 'alpha'],
+    'ordered_imports' => ['sort_algorithm' => 'length'],
     'psr_autoloading' => true,
     'phpdoc_indent' => true,
     'phpdoc_inline_tag_normalizer' => true,
@@ -134,7 +134,7 @@ $rules = [
     'switch_case_semicolon_to_colon' => true,
     'switch_case_space' => true,
     'ternary_operator_spaces' => true,
-    'trailing_comma_in_multiline' => ['elements' => ['arrays']],
+    'trailing_comma_in_multiline' => false,
     'trim_array_spaces' => true,
     'unary_operator_spaces' => true,
     'visibility_required' => [
