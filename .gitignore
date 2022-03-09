@@ -20,3 +20,5 @@ Homestead.json
 /.vscode
 !/.vscode/extensions.json
 *.code-workspace
+
+*.cache
