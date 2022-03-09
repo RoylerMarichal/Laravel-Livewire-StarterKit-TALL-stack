@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-
 use Livewire\Component;
 
 class LandingLivewire extends Component
@@ -12,8 +11,8 @@ class LandingLivewire extends Component
         return view('livewire.landing-livewire')->extends('layouts.appLanding');
     }
 
-    public function mount(){
+    public function mount()
+    {
         //
     }
-
 }

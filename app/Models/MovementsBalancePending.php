@@ -6,9 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class MovementsBalancePending extends Model
 {
-    protected $table='movements_balance_pending';
-
-
-
-
+    protected $table = 'movements_balance_pending';
 }

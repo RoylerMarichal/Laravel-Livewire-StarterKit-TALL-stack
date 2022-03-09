@@ -2,16 +2,16 @@
 
 namespace Tests\Feature\Auth;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 use Livewire\Livewire;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\URL;
 
 class VerifyTest extends TestCase
 {

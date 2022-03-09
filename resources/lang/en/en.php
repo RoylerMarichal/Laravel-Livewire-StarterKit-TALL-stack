@@ -1,5 +1,6 @@
 <?php
+
 return [
-'Stats' => 'Estadísticas',
-'Spaces' => 'Espacios',
+    'Stats' => 'Estadísticas',
+    'Spaces' => 'Espacios',
 ];

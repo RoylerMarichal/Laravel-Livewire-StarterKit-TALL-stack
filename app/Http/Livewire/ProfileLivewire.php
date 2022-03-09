@@ -2,21 +2,30 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Freelancer;
+use Hash;
+use App\Models\User;
+use App\Models\Service;
 use Livewire\Component;
+use App\Models\Freelancer;
+use App\Models\Valoration;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Service;
-use App\Models\User;
-use App\Models\Valoration;
-use Hash;
 
 class ProfileLivewire extends Component
 {
+    public $currentPass;
 
-    public $currentPass, $newPass, $user, $avatar, $phone, $email;
+    public $newPass;
+
+    public $user;
+
+    public $avatar;
+
+    public $phone;
+
+    public $email;
 
     use WithFileUploads;
 
@@ -50,10 +59,10 @@ class ProfileLivewire extends Component
             $this->sendAlert('success', 'Contraseña actualizada', 'top-end');
         } else {
             $this->sendAlert('error', 'Contraseña actual incorrecta', 'top-end');
+
             return;
         }
     }
-
 
     public function updatedAvatar()
     {
@@ -64,7 +73,7 @@ class ProfileLivewire extends Component
         $user = Auth::user();
 
         if ($this->avatar) {
-            $user->avatar = Self::uploadImage($this->avatar);
+            $user->avatar = self::uploadImage($this->avatar);
         }
 
         $user->update();
@@ -103,23 +112,22 @@ class ProfileLivewire extends Component
     {
         $image = $path;
         if (Auth::check()) {
-            $avatarName =  Auth::user()->name . substr(uniqid(rand(), true), 7, 7) . '.webp';
-            $avatarName2 =  Auth::user()->name . substr(uniqid(rand(), true), 7, 7) . '.jpg';
+            $avatarName = Auth::user()->name.substr(uniqid(rand(), true), 7, 7).'.webp';
+            $avatarName2 = Auth::user()->name.substr(uniqid(rand(), true), 7, 7).'.jpg';
         } else {
-            $avatarName =  'invitado' . substr(uniqid(rand(), true), 7, 7) . '.webp';
-            $avatarName2 =  Auth::user()->name . substr(uniqid(rand(), true), 7, 7) . '.jpg';
+            $avatarName = 'invitado'.substr(uniqid(rand(), true), 7, 7).'.webp';
+            $avatarName2 = Auth::user()->name.substr(uniqid(rand(), true), 7, 7).'.jpg';
         }
 
         $img = Image::make($image->getRealPath())->encode('webp', 50)->orientate();
         $imgReal = Image::make($image->getRealPath())->encode('jpg', 100)->orientate();
         $imgReal->stream();
         $img->stream(); // <-- Key point
-        Storage::disk('public')->put('/avatars' . '/' . $avatarName, $img, 'public');
-        $path = '/avatars/' . $avatarName;
+        Storage::disk('public')->put('/avatars'.'/'.$avatarName, $img, 'public');
+        $path = '/avatars/'.$avatarName;
 
         return $path;
     }
-
 
     public function sendAlert($tipo, $texto, $posicion)
     {

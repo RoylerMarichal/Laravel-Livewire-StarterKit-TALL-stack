@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Auth\Passwords;
 
+use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use Livewire\Livewire;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ConfirmTest extends TestCase
 {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MovementsBalancePending;
-use Illuminate\Http\Request;
-use App\Models\Campain;
-use App\Models\Order;
-use App\Models\Setting;
 use Auth;
+use App\Models\Order;
+use App\Models\Campain;
+use App\Models\Setting;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\MovementsBalancePending;
 
 class QvaPayController extends Controller
 {
@@ -18,9 +18,10 @@ class QvaPayController extends Controller
         $movement = MovementsBalancePending::find($request->remote_id);
 
         if ($movement->type == 'service' || $movement->type == 'order') {
-           OrderController::orderPaid($movement->model_id);
+            OrderController::orderPaid($movement->model_id);
         }
         DB::commit();
+
         return redirect()->route('home');
     }
 
@@ -28,9 +29,9 @@ class QvaPayController extends Controller
     {
         $movement = MovementsBalancePending::find($request->remote_id);
         $movement->delete();
+
         return redirect('/home');
     }
-
 
     public static function payWithQvaPay($type, $model, $modelID, $amount)
     {
@@ -40,18 +41,17 @@ class QvaPayController extends Controller
         $newMovement->type = $type;
         $newMovement->model = $model;
         $newMovement->model_id = $modelID;
-        $code = 'C-' . random_int(100, 10000);
+        $code = 'C-'.random_int(100, 10000);
         while (MovementsBalancePending::where('code', $code)->first()) {
-            $code = 'C-' . random_int(100, 10000);
+            $code = 'C-'.random_int(100, 10000);
         }
         $newMovement->code = $code;
         $newMovement->save();
         $id = $newMovement->id;
         $amount = $amount;
-        $description="Invoice";
+        $description = 'Invoice';
         $appID = Setting::first()->qvapay_app_id;
         $app_secret = Setting::first()->qvapay_app_secret;
-
 
         $query = "https://qvapay.com/api/v1/create_invoice?app_id=$appID&app_secret=$app_secret&amount=$amount&description=$description&remote_id=$id&signed=0";
 
@@ -73,8 +73,8 @@ class QvaPayController extends Controller
 
             $newMovement->url = $url;
             $newMovement->update();
-            return $url;
 
+            return $url;
         }
     }
 }

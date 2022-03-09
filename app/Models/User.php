@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Cashier\Billable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
@@ -42,21 +42,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function notifications(){
-        return $this->hasMany(Notifica::class,'user_id');
+
+    public function notifications()
+    {
+        return $this->hasMany(Notifica::class, 'user_id');
     }
-    public function admin(){
+
+    public function admin()
+    {
         return $this->hasOne(Admin::class);
     }
 
-    public function staff(){
+    public function staff()
+    {
         return $this->hasOne(Staff::class);
     }
 
-    public static function adminOrStaff(){
-        if(Auth::user()->admin || Auth::user()->staff  ){
+    public static function adminOrStaff()
+    {
+        if (Auth::user()->admin || Auth::user()->staff) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
