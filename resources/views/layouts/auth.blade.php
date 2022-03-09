@@ -8,4 +8,10 @@
             {{ $slot }}
         @endisset
     </div>
+
+    @guest
+        @if (config('captcha.sitekey') && config('captcha.secret'))
+            {!! NoCaptcha::renderJs(app()->getLocale(), false) !!}
+        @endif
+    @endguest
 @endsection
