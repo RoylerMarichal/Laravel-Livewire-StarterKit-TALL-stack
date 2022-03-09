@@ -13,10 +13,13 @@ class Email extends Component
     /** @var string|null */
     public $emailSentMessage = false;
 
+    public $recaptcha;
+
     public function sendResetPasswordLink()
     {
         $this->validate([
             'email' => ['required', 'email'],
+            'recaptcha' => config('captcha.secret') ? ['required', 'captcha'] : ['nullable'],
         ]);
 
         $response = $this->broker()->sendResetLink(['email' => $this->email]);
