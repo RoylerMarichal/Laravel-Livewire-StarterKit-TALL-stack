@@ -2,23 +2,30 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\MovementsBalanceController;
-use App\Http\Controllers\QvaPayController;
+use Auth;
 use App\Models\Invoice;
-use App\Models\MovementsBalancePending;
 use App\Models\Setting;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use App\Models\MovementsBalancePending;
 use Illuminate\Support\Facades\Storage;
-use Auth;
-
+use App\Http\Controllers\QvaPayController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\MovementsBalanceController;
 
 class ViewInvoiceLivewire extends Component
 {
-    public $invoice, $setting, $viewManual = false, $paymentImage, $viewStripe = false;
+    public $invoice;
+
+    public $setting;
+
+    public $viewManual = false;
+
+    public $paymentImage;
+
+    public $viewStripe = false;
 
     protected $listeners = ['paymenetSucceful' => 'paymentCharge'];
 
@@ -32,11 +39,11 @@ class ViewInvoiceLivewire extends Component
             $token = $id;
 
             $charge = \Stripe\Charge::create(
-                array(
+                [
                     'amount' => 2000,
                     'currency' => 'usd',
                     'source' => $token
-                )
+                ]
             );
             $this->proccesPayment('stripe');
             $this->sendAlert('success', 'Pago completado correctamente', 'top-end');
@@ -60,7 +67,7 @@ class ViewInvoiceLivewire extends Component
 
     public function deletePaymenImage()
     {
-        $this->invoice->payment_image = Null;
+        $this->invoice->payment_image = null;
         $this->invoice->update();
     }
 
@@ -70,6 +77,7 @@ class ViewInvoiceLivewire extends Component
 
         if ($result == 500) {
             $this->sendAlert('error', 'Ocurrió un error con QvaPay', 'top-end');
+
             return;
         }
 
@@ -78,18 +86,18 @@ class ViewInvoiceLivewire extends Component
 
     public function payWithManual()
     {
-        $this->viewManual = !$this->viewManual;
+        $this->viewManual = ! $this->viewManual;
     }
 
     public function payWithStripe()
     {
-        $this->viewStripe = !$this->viewStripe;
+        $this->viewStripe = ! $this->viewStripe;
     }
 
-
-    public function proccesPayment($method = Null)
+    public function proccesPayment($method = null)
     {
         InvoiceController::payment($this->invoice->id, $method);
+
         return redirect()->route('view_invoice', $this->invoice->id);
     }
 
@@ -102,9 +110,9 @@ class ViewInvoiceLivewire extends Component
     {
         DB::beginTransaction();
         if ($this->paymentImage) {
-            $this->invoice->payment_image = $this->uploadImage($this->paymentImage, 'payment' . $this->invoice->id . '.webp');
+            $this->invoice->payment_image = $this->uploadImage($this->paymentImage, 'payment'.$this->invoice->id.'.webp');
             $this->invoice->update();
-            MovementsBalanceController::new_movement_pending('invoice', 'earning', $this->invoice->id, $this->invoice->value, 'manual', 'Pago manual de la factura con ID ' . $this->invoice->id);
+            MovementsBalanceController::new_movement_pending('invoice', 'earning', $this->invoice->id, $this->invoice->value, 'manual', 'Pago manual de la factura con ID '.$this->invoice->id);
             $this->sendAlert('success', 'Comprobante enviado', 'top-end');
         }
         DB::commit();
@@ -113,7 +121,7 @@ class ViewInvoiceLivewire extends Component
     public function removePaymentImage()
     {
         DB::beginTransaction();
-        $this->invoice->payment_image = Null;
+        $this->invoice->payment_image = null;
         $this->invoice->update();
         $movement = MovementsBalancePending::where('refer', 'invoice')->where('refer_id', $this->invoice->id)->first();
         if ($movement) {
@@ -126,17 +134,15 @@ class ViewInvoiceLivewire extends Component
     {
         $image = $path;
 
-
         $img = Image::make($image->getRealPath())->encode('webp', 50)->orientate();
         $imgReal = Image::make($image->getRealPath())->encode('jpg', 100)->orientate();
         $imgReal->stream();
         $img->stream(); // <-- Key point
-        Storage::disk('public')->put('/medias' . '/' . $avatarName, $img, 'public');
-        $path = '/medias/' . $avatarName;
+        Storage::disk('public')->put('/medias'.'/'.$avatarName, $img, 'public');
+        $path = '/medias/'.$avatarName;
 
         return $path;
     }
-
 
     public function sendAlert($tipo, $texto, $posicion)
     {

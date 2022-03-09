@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notifica extends Model
 {
-    protected $table='notifica';
+    protected $table = 'notifica';
 }

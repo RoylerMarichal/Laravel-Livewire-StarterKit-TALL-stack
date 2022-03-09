@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\IpController;
-use App\Models\Setting;
-use App\Models\Stat;
-use Closure;
-use Illuminate\Http\Request;
 use Browser;
+use Closure;
+use App\Models\Stat;
+use App\Models\Setting;
+use Illuminate\Http\Request;
+use App\Http\Controllers\IpController;
 
 class Stats
 {
@@ -22,14 +22,13 @@ class Stats
     {
         $setting = Setting::first();
         if ($setting->module_stats_system) {
-
             if (Browser::isBot()) {
                 return $next($request);
             }
 
             $stat = Stat::where('ip', $request->ip())->where('created_at', '>=', now()->subHours(24))->first();
-            if($stat){
-               return $next($request);
+            if ($stat) {
+                return $next($request);
             }
 
             //Save the view
@@ -61,13 +60,14 @@ class Stats
             $view->browser = Browser::browserFamily();
             //country
             $ip = $request->ip();
-            $view->country = IpController::getCountry($ip, "NamE");  //Cu
+            $view->country = IpController::getCountry($ip, 'NamE');  //Cu
 
             //Refer
-            $view->refer = $request->server('REQUEST_SCHEME') . '://' . $request->server('REMOTE_ADDR') . $request->server('REDIRECT_URL');
+            $view->refer = $request->server('REQUEST_SCHEME').'://'.$request->server('REMOTE_ADDR').$request->server('REDIRECT_URL');
             $view->ip = $ip;
             $view->save();
         }
+
         return $next($request);
     }
 }

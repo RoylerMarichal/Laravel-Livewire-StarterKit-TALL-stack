@@ -26,7 +26,7 @@ class Login extends Component
             'recaptcha' => config('captcha.secret') ? 'required|captcha' : 'nullable',
         ]);
 
-        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('email', trans('auth.failed'));
 
             return;

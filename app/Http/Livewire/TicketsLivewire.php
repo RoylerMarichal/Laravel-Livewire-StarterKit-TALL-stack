@@ -3,21 +3,26 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ticket;
-use App\Models\TicketMessage;
-
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use App\Models\TicketMessage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TicketsLivewire extends Component
 {
     public $view = 'tickets';
+
     //Form New
-    public $subjet, $description;
+    public $subjet;
+
+    public $description;
+
     //View Messages
     public $messages;
+
     //Ticket
     public $ticket;
+
     //Reply
     public $comment;
 
@@ -61,7 +66,7 @@ class TicketsLivewire extends Component
         $this->view = 'messages';
 
         $ticket = Ticket::findOrFail($id);
-        if (Auth::user()->admin && !$ticket->admin_id) {
+        if (Auth::user()->admin && ! $ticket->admin_id) {
             $ticket->admin_id = Auth::user()->admin->id;
             $ticket->update();
         }

@@ -21,5 +21,7 @@ Homestead.json
 !/.vscode/extensions.json
 *.code-workspace
 
+*.cache
+
 # Avatars
 public/avatars
