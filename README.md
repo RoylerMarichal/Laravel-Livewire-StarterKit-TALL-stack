@@ -15,11 +15,12 @@ The orders of the services 5- Admin Dashboard
 - User Dashboard
 - Stats system
 This module has a system to detect bot and ensure that each visit is unique within 24 hours to optimize the size of the table in the database.
--  Internal notification system
+- Internal notification system
 - Edit profile page
 - Tickets system
 - Dark and Light theme
- - All in real time with Livewire and Alpine Js
+- All in real time with Livewire and Alpine Js
+- Implement Google ReCaptcha in Login
 
 ## Instructions
 - Clone the repo
