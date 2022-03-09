@@ -15,3 +15,8 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 /.vagrant
+
+# Vscode
+/.vscode
+!/.vscode/extensions.json
+*.code-workspace

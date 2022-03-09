@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "mikestead.dotenv",
+        "editorconfig.editorconfig",
+        "ryannaddy.laravel-artisan",
+        "onecentlin.laravel-blade",
+        "onecentlin.laravel5-snippets",
+        "codingyu.laravel-goto-view",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "naoray.laravel-goto-components",
+        "shufo.vscode-blade-formatter",
+        "ihunte.laravel-blade-wrapper",
+        "bmewburn.vscode-intelephense-client",
+        "mehedidracula.php-namespace-resolver",
+        "mohamedbenhida.laravel-intellisense",
+        "neilbrayfield.php-docblocker",
+        "bradlc.vscode-tailwindcss"
+    ]
+}
