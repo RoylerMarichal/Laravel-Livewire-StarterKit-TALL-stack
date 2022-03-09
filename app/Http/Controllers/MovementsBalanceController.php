@@ -27,7 +27,6 @@ class MovementsBalanceController extends Controller
 
         $newMovement->code = $code;
         $newMovement->save();
-
     }
 
     public static function new_movement($for, $type, $model_id, $concept, $amount, $onlyRegister, $of = null, $via = 'qvapay')
@@ -68,6 +67,5 @@ class MovementsBalanceController extends Controller
         }
 
         $m->update();
-
     }
 }

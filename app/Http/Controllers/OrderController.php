@@ -36,6 +36,5 @@ class OrderController extends Controller
         $order->update();
         NotificaController::NotificaAdmin('Order paid', 'The order with id: '.$order->id.'was paid');
         NotificaController::Notifica($order->user_id, 'Order paid', 'The order with id: '.$order->id.'was paid');
-
     }
 }

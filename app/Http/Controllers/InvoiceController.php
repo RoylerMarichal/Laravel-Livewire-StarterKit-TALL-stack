@@ -68,7 +68,6 @@ class InvoiceController extends Controller
 
         DB::commit();
         NotificaController::NotificaAdmin('Invoice Paid', 'Already was aid a invoice');
-
     }
 
     public static function paywithEnzona($invoiceID)
