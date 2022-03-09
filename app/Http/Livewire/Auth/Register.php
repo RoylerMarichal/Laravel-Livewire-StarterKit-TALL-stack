@@ -23,12 +23,15 @@ class Register extends Component
     /** @var string */
     public $passwordConfirmation = '';
 
+    public $recaptcha;
+
     public function register()
     {
         $this->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation'],
+            'recaptcha' => config('captcha.secret') ? ['required', 'captcha'] : ['nullable'],
         ]);
 
         $user = User::create([
