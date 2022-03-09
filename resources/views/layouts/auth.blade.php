@@ -10,10 +10,8 @@
     </div>
 
     @guest
-        <div wire:ignore>
         @if (config('captcha.sitekey') && config('captcha.secret'))
             {!! NoCaptcha::renderJs(app()->getLocale(), false) !!}
         @endif
-        </div>
     @endguest
 @endsection
