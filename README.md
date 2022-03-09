@@ -1,4 +1,5 @@
 # Laravel Livewire StarterKit
+![Laravel Livewire StarterKit](https://raw.githubusercontent.com/cluzstudio/Laravel-Livewire-StarterKit/main/public/assets/img/preview.jpg)
 
 This script could work perfectly for a project in production without making additional changes, but the goal is to provide a quick way to start or move forward with the TALL stack (Tailwind, Alpine, Laravel, and Livewire)
 
