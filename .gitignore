@@ -22,3 +22,6 @@ Homestead.json
 *.code-workspace
 
 *.cache
+
+# Avatars
+public/avatars
