@@ -50,11 +50,11 @@ class CreateUser extends Command
             'password'      => Hash::make($password)
         ]);
 
-        $this->info('User ' . $name . ' was created.');
+        $this->info('User '.$name.' was created.');
 
         if ($admin) {
             $user->admin()->create();
-            $this->info('User ' . $name . ' set as administrator');
+            $this->info('User '.$name.' set as administrator');
         }
     }
 }
