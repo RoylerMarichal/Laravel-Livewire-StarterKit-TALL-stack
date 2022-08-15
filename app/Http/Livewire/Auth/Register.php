@@ -7,10 +7,15 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class Register extends Component
 {
+    use UsesSpamProtection;
+
+    public HoneypotData $extraFields;
+
     /** @var string */
     public $name = '';
 
@@ -25,8 +30,15 @@ class Register extends Component
 
     public $recaptcha;
 
+    public function mount()
+    {
+        $this->extraFields = new HoneypotData();
+    }
+
     public function register()
     {
+        $this->protectAgainstSpam(); // if is spam, will abort the request
+
         $this->validate([
             'name' => ['required'],
             'email' => ['required', 'email', 'unique:users'],

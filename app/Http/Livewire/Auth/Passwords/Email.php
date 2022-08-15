@@ -4,9 +4,15 @@ namespace App\Http\Livewire\Auth\Passwords;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Password;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class Email extends Component
 {
+    use UsesSpamProtection;
+
+    public HoneypotData $extraFields;
+
     /** @var string */
     public $email;
 
@@ -15,8 +21,15 @@ class Email extends Component
 
     public $recaptcha;
 
+    public function mount()
+    {
+        $this->extraFields = new HoneypotData();
+    }
+
     public function sendResetPasswordLink()
     {
+        $this->protectAgainstSpam(); // if is spam, will abort the request
+
         $this->validate([
             'email' => ['required', 'email'],
             'recaptcha' => config('captcha.secret') ? ['required', 'captcha'] : ['nullable'],

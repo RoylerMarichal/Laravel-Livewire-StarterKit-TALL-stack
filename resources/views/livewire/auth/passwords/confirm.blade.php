@@ -19,6 +19,7 @@
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="confirm">
+                <x-honeypot livewire-model="extraFields" />
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700 leading-5">
                         Password

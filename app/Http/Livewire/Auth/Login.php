@@ -4,9 +4,15 @@ namespace App\Http\Livewire\Auth;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class Login extends Component
 {
+    use UsesSpamProtection;
+
+    public HoneypotData $extraFields;
+
     /** @var string */
     public $email = '';
 
@@ -18,8 +24,15 @@ class Login extends Component
 
     public $recaptcha;
 
+    public function mount()
+    {
+        $this->extraFields = new HoneypotData();
+    }
+
     public function authenticate()
     {
+        $this->protectAgainstSpam(); // if is spam, will abort the request
+
         $this->validate([
             'email' => 'required|email',
             'password' => 'required',
