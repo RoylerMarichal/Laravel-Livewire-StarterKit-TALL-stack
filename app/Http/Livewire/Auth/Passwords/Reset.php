@@ -6,12 +6,17 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Spatie\Honeypot\Http\Livewire\Concerns\HoneypotData;
+use Spatie\Honeypot\Http\Livewire\Concerns\UsesSpamProtection;
 
 class Reset extends Component
 {
+    use UsesSpamProtection;
+
+    public HoneypotData $extraFields;
+
     /** @var string */
     public $token;
 
@@ -28,10 +33,13 @@ class Reset extends Component
     {
         $this->email = request()->query('email', '');
         $this->token = $token;
+        $this->extraFields = new HoneypotData();
     }
 
     public function resetPassword()
     {
+        $this->protectAgainstSpam(); // if is spam, will abort the request
+
         $this->validate([
             'token' => 'required',
             'email' => 'required|email',

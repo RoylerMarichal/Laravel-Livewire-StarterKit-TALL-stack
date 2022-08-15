@@ -32,6 +32,7 @@
                 </div>
             @else
                 <form wire:submit.prevent="sendResetPasswordLink">
+                    <x-honeypot livewire-model="extraFields" />
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
                             Email address

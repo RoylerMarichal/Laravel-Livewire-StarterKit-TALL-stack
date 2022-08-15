@@ -16,6 +16,7 @@
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
             <form wire:submit.prevent="resetPassword">
+                <x-honeypot livewire-model="extraFields" />
                 <input wire:model="token" type="hidden">
 
                 <div>
