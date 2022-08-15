@@ -37,12 +37,12 @@ class MovementsBalanceController extends Controller
         $movement->for = $for;
         if ($onlyRegister == 'No') {
             switch ($for) {
-              case 'user':
-              $movement->user_id = $model_id;
-            self::operate_amount('user', $model_id, $type, $amount);
-            // code...
-            break;
-        }
+                case 'user':
+                    $movement->user_id = $model_id;
+                    self::operate_amount('user', $model_id, $type, $amount);
+                    // code...
+                    break;
+            }
         }
         $movement->concept = $concept;
         $movement->details = $concept;
@@ -55,10 +55,10 @@ class MovementsBalanceController extends Controller
     public static function operate_amount($model, $id, $type, $amount)
     {
         switch ($model) {
-          case 'user':
-          $m = User::find($id);
-          break;
-      }
+            case 'user':
+                $m = User::find($id);
+                break;
+        }
 
         if ($type == 'earning') {
             $m->amount = $m->amount + $amount;

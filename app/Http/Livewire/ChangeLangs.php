@@ -23,6 +23,6 @@ class ChangeLangs extends Component
 
         return redirect('/');
         //     App::setLocale($lang);
-      //  Artisan::call('config:cache');
+        //  Artisan::call('config:cache');
     }
 }
