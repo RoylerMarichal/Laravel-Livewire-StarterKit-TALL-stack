@@ -18,7 +18,7 @@ class Setting extends Model
     public static function getAllSettings()
     {
         return Cache::rememberForever('settings.all', function () {
-            return self::first();
+            return self::first() ?? [];
         });
     }
 
