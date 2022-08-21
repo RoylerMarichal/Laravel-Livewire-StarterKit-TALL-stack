@@ -26,6 +26,7 @@ This module has a system to detect bot and ensure that each visit is unique with
 ## Instructions
 - Clone the repo
 - Modify the .env file with the data of your database and mail
+- Generate the key, Run in the console: php artisan key:generate
 - Run migrations & seeders
 - Run in the console php artisan optimize
 - Run in the npm run production console

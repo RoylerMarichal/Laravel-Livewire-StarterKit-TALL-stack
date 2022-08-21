@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if (config('values.env') == 'production') {
+            View::share('setting', Setting::getAllSettings());
+        }
     }
 }
