@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+<html  x-data="{ darkMode: localStorage.getItem('dark') === 'true'} "
+    x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
+    x-bind:class="{ 'dark': darkMode }" lang="en">
 
 <head>
     <meta charset="UTF-8" />

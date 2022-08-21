@@ -35,3 +35,7 @@ This module has a system to detect bot and ensure that each visit is unique with
 - Run in the console: npm install
 - Run in the console: npm run prod 
 - Enjoy!
+
+## Admin Login
+- User: admin@admin.com
+- Password: 123456789 
