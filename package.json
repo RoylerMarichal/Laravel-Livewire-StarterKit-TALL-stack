@@ -10,7 +10,6 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "alpinejs": "^2.8",
         "autoprefixer": "^10.4.2",
         "laravel-mix": "^6.0.6",
         "laravel-mix-tailwind": "^0.1.2",
@@ -21,7 +20,6 @@
         "tailwindcss": "^3.0.23"
     },
     "dependencies": {
-        "@alpinejs/persist": "^3.2.3",
         "@tailwindcss/aspect-ratio": "^0.4.0",
         "@tailwindcss/forms": "^0.5.0",
         "@tailwindcss/line-clamp": "^0.3.1",

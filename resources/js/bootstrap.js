@@ -1,13 +1,4 @@
-// import Alpine from 'alpinejs'
-// import persist from '@alpinejs/persist'
-
-// Alpine.plugin(persist)
-
-// window.Alpine = Alpine
-
-// Alpine.start()
-//import 'alpinejs';
-
+ 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
