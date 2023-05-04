@@ -4,9 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\Service;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class AdminServicesLivewire extends Component
 {
+    use LivewireAlert;
+    
     public $name;
 
     public $price;

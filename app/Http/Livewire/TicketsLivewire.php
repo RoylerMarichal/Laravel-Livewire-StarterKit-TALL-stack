@@ -7,9 +7,11 @@ use Livewire\Component;
 use App\Models\TicketMessage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class TicketsLivewire extends Component
 {
+    use LivewireAlert;
     public $view = 'tickets';
 
     //Form New

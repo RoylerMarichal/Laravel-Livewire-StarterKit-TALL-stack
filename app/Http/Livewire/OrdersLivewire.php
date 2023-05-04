@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Order;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class OrdersLivewire extends Component
 {
+    use LivewireAlert;
     public function render()
     {
         return view('livewire.orders-livewire', [

@@ -6,9 +6,12 @@ use Auth;
 use App\Models\Stat;
 use App\Models\Campain;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StatsLivewire extends Component
 {
+    use LivewireAlert;
+    
     public $campain;
 
     public $labels;

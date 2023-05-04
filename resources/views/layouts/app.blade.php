@@ -39,6 +39,7 @@
     sidebar: false,
     profile: false,
     notifica: false,
+    isSideMenuOpen: false
     
 }">
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': sidebar }">

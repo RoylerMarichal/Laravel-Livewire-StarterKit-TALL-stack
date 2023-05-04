@@ -46,6 +46,7 @@
  .btn-yellow { @apply btn hover:opacity-80 tr-300 bg-gradient-to-r from-yellow-300 to-yellow-500 text-center text-white my-1 font-medium };
  .btn-red { @apply btn hover:opacity-80 tr-300 bg-gradient-to-r from-red-300 to-red-500 text-center text-white my-1 font-medium };
  .btn-green { @apply btn hover:opacity-80 tr-300 bg-gradient-to-r from-green-300 to-green-500 text-center text-white my-1 font-medium };
+ .input-text { @apply rounded-md bg-gray-50 text-gray-700 focus:outline-none  dark:bg-gray-600 dark:text-white }
 
 @tailwind utilities;
 

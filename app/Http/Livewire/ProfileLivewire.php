@@ -12,9 +12,12 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ProfileLivewire extends Component
 {
+    use LivewireAlert;
+    
     public $currentPass;
 
     public $newPass;

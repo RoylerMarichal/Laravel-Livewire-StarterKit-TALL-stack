@@ -6,9 +6,11 @@ use App\Models\Service;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OrderController;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class BuyServicesLivewire extends Component
 {
+    use LivewireAlert;
     public $serviceToBuy;
 
     //Buy a service

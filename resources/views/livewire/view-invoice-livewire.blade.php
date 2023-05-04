@@ -279,7 +279,7 @@
                                                     <div>
                                                         <span
                                                             class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
-                                                            <svg class="w-5 h-5 text-white"
+                                                            <svg class="w-6 h-6 text-white"
                                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                                 fill="currentColor" aria-hidden="true">
                                                                 <path fill-rule="evenodd"

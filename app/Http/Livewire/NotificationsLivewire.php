@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Notifica;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class NotificationsLivewire extends Component
 {
+    use LivewireAlert;
+    
     public $notifications;
 
     public $userId;

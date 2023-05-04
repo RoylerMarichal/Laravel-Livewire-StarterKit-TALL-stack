@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ChangeLangs extends Component
 {
+    use LivewireAlert;
     public function render()
     {
         return view('livewire.change-langs');

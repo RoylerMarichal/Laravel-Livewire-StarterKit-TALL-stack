@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\QvaPayController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MovementsBalanceController;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ViewInvoiceLivewire extends Component
 {
+    use LivewireAlert;
     public $invoice;
 
     public $setting;

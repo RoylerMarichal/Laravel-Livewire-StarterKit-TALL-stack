@@ -8,9 +8,11 @@ use App\Models\Order;
 use App\Models\Invoice;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class HomeLivewire extends Component
 {
+    use LivewireAlert;
     public $impresions;
 
     public $users;

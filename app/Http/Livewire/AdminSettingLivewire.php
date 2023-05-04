@@ -9,9 +9,11 @@ use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class AdminSettingLivewire extends Component
 {
+    use LivewireAlert;
     use WithFileUploads;
 
     //General

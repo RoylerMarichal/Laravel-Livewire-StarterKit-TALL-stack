@@ -7,9 +7,12 @@ use App\Models\Stat;
 use App\Models\User;
 use App\Models\Campain;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class StatsGeneralLivewire extends Component
 {
+    use LivewireAlert;
+    
     public $campain;
 
     public $labels;

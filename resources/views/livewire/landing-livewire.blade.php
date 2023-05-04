@@ -25,9 +25,6 @@
                         <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl">
                             {{ __('messages.our_services') }}
                         </h2>
-                        {{-- <p class="mt-4 text-xl text-gray-600">
-                        Edit the description
-                        </p> --}}
                     </div>
                 </div>
             </div>

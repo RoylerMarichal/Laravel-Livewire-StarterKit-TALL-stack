@@ -2,7 +2,7 @@
     @section('metas')
         <title>{{ __('messages.settings') }}</title>
     @endsection
-    <div x-data="{ page: $persist('general') }">
+    <div x-data="{ page: 'general' }">
         <div class="container px-6 mx-auto grid">
             <h2 class="my-6 text-2xl font-semibold  dark:text-gray-200">
                 {{ __('messages.settings') }}
